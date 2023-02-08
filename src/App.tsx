@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { faker } from "@faker-js/faker";
 import { UserCircle } from "./Icons";
+import { YearsPageView } from "./components/YearsPageView";
 
 interface User {
   id: string;
@@ -39,7 +40,7 @@ function App() {
             </>
           ) : (
             users.map((user) => (
-              <div id={user.id} className="flex my-2">
+              <div key={user.id} className="flex my-2">
                 <UserCircle />
                 <p className="ml-1 text-sm text-gray-800">{user.name}</p>
               </div>
@@ -47,7 +48,9 @@ function App() {
           )}
         </div>
         <div className="flex-1">
-          {users.length !== 0 ? null : (
+          {users.length !== 0 ? (
+            <YearsPageView />
+          ) : (
             <div className="flex justify-center items-center h-full">
               <h1 className="text-gray-400 text-4xl">
                 You don't currently have any users :<span>&#40;</span>
